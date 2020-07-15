@@ -8,6 +8,7 @@ import (
 	  "github.com/jung-kurt/gofpdf" /// Used to create pdf File
 	 "io"
 	 "strings"
+	// "golang.org/x/net/html"
 	// "io/ioutil"
 	  "encoding/json"
 	  //     "bytes"
@@ -17,7 +18,7 @@ import (
    "net/http"
    "strconv"
      //"time"
-     "path"
+//     "path"
 )
 
 // type webData struct { //
@@ -36,7 +37,7 @@ fmt.Println(r.URL.String())
 		fmt.Println("HOME")
 
 	webScrape := ScrapePage{""}
-	fp := path.Join("templates", "home.html")
+	fp := "home.html"//path.Join("templates", "home.html")
 	tmpl, err := template.ParseFiles(fp) // Parsing our home html which we will use to render data
    if err != nil {
 	   http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -216,12 +217,12 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
 }
 func main() {
 
-
+	fmt.Println("WE ARE COMPOSING NOW")
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/search", handler)
 	http.HandleFunc("/download", handlerDownload)
 
-	    log.Fatal(http.ListenAndServe(":" + os.Getenv("PORT"), nil))
+	  log.Fatal(http.ListenAndServe( ":" + os.Getenv("PORT"), nil))//":8080",nil)) //+ os.Getenv("PORT"), nil))
 
 
 

@@ -1,0 +1,8 @@
+version: "2"
+services:
+  app:
+    image: golang:1.6.1-alpine
+    volumes:
+      - .:/go/src/makeUtility
+    working_dir: /go/src/makeUtility
+    command: go run scrape.go
