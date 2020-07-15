@@ -222,7 +222,7 @@ func main() {
 	http.HandleFunc("/search", handler)
 	http.HandleFunc("/download", handlerDownload)
 
-	  log.Fatal(http.ListenAndServe( ":" + os.Getenv("PORT"), nil))//":8080",nil)) //+ os.Getenv("PORT"), nil))
+	  log.Fatal(http.ListenAndServe( ":80" ))//+ os.Getenv("PORT"), nil))//":8080",nil)) //+ os.Getenv("PORT"), nil))
 
 
 
