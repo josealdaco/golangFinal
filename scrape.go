@@ -116,23 +116,23 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
 			actualString = actualString + value//strings.TrimSuffix(value, "\n")
 		}
 		fmt.Println(toString)
-		// err2 := WriteToFile("response.pdf", "Hello")
-		//    if err2 != nil {
-		// 		log.Fatal(err2)
-		// }
+		err2 := WriteToFile("response.txt", actualString)
+		   if err2 != nil {
+				log.Fatal(err2)
+		}
 
-			err5 := GeneratePdf("response.pdf", actualString)
-    	if err5 != nil {
-        	panic(err5)
-    	}
+		// 	err5 := GeneratePdf("response.pdf", actualString)
+    	// if err5 != nil {
+        // 	panic(err5)
+    	// }
 
 
 
-			w.Header().Set("Content-Disposition", "attachment; filename="+strconv.Quote("lkdalda.pdf"))
+			w.Header().Set("Content-Disposition", "attachment; filename="+strconv.Quote("translate.txt"))
 			w.Header().Set("Content-Type", "application/octet-stream")
 					http.ServeFile(w, r, "/Users/josearellanes/makeUtility/response.pdf")
 
-			 const TmpDir = "/Users/josearellanes/makeUtility/response.pdf";
+			 const TmpDir = "/Users/josearellanes/makeUtility/response.txt";
 // 		downloadBytes, err := ioutil.ReadFile(file)
 //
 // 		if err != nil {
