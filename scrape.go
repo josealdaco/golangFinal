@@ -9,15 +9,15 @@ import (
 	 "io"
 	 "strings"
 	// "golang.org/x/net/html"
-	// "io/ioutil"
+	"io/ioutil"
 	  "encoding/json"
-	  //     "bytes"
+	      "bytes"
    "log"
  //  "path/filepath"
    "os"
    "net/http"
    "strconv"
-     //"time"
+     "time"
 //     "path"
 )
 
@@ -126,13 +126,38 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
         // 	panic(err5)
     	// }
 
+		 		downloadBytes, err := ioutil.ReadFile("/Users/josearellanes/makeUtility/response.txt")
 
+				if err != nil {
+						fmt.Println(err)
+				}
 
-			w.Header().Set("Content-Disposition", "attachment; filename="+strconv.Quote("translate.txt"))
-			w.Header().Set("Content-Type", "application/octet-stream")
-			http.ServeFile(w, r, "/Users/josearellanes/makeUtility/response.txt")
+				// set the default MIME type to send
+				mime := http.DetectContentType(downloadBytes)
 
-			 const TmpDir = "/Users/josearellanes/makeUtility/response.txt";
+				fileSize := len(string(downloadBytes))
+
+				// Generate the server headers
+				w.Header().Set("Content-Type", mime)
+				w.Header().Set("Content-Disposition", "attachment; filename="+"responseFile"+"")
+				w.Header().Set("Expires", "0")
+				w.Header().Set("Content-Transfer-Encoding", "binary")
+				w.Header().Set("Content-Length", strconv.Itoa(fileSize))
+				w.Header().Set("Content-Control", "private, no-transform, no-store, must-revalidate")
+
+				b := bytes.NewBuffer(downloadBytes)
+				if _, err := b.WriteTo(w); err != nil {
+				             fmt.Fprintf(w, "%s", err)
+				     }
+
+				// force it down the client's.....
+				http.ServeContent(w, r,"/Users/josearellanes/makeUtility/response.txt", time.Now(), bytes.NewReader(downloadBytes))
+
+			// w.Header().Set("Content-Disposition", "attachment; filename="+strconv.Quote("translate.txt"))
+			// w.Header().Set("Content-Type", "application/octet-stream")
+			// http.ServeFile(w, r, "/Users/josearellanes/makeUtility/response.txt")
+			//
+			//  const TmpDir = "/Users/josearellanes/makeUtility/response.txt";
 // 		downloadBytes, err := ioutil.ReadFile(file)
 //
 // 		if err != nil {
