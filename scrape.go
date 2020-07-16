@@ -130,7 +130,7 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
 
 			w.Header().Set("Content-Disposition", "attachment; filename="+strconv.Quote("translate.txt"))
 			w.Header().Set("Content-Type", "application/octet-stream")
-					http.ServeFile(w, r, "/Users/josearellanes/makeUtility/response.pdf")
+			http.ServeFile(w, r, "/Users/josearellanes/makeUtility/response.txt")
 
 			 const TmpDir = "/Users/josearellanes/makeUtility/response.txt";
 // 		downloadBytes, err := ioutil.ReadFile(file)
