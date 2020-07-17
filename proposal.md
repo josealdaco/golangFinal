@@ -1,0 +1,1 @@
+<h1> For my makeUtility project, I had an assignment to create a website and send a research paper with it, si my goal was to simply create the website and be able to scrape it and send a pdf file to my teacher. As an Additional feature the user can also translate and edit the forum before it gets downloaded in the box area</h1>
