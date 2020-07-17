@@ -127,7 +127,7 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
         	panic(err5)
     	}
 
-		 		downloadBytes, err := ioutil.ReadFile("/response.pdf")
+		 		downloadBytes, err := ioutil.ReadFile("response.pdf")
 
 				if err != nil {
 						fmt.Println(err)
@@ -152,7 +152,7 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
 				     }
 
 				// force it down the client's.....
-				http.ServeContent(w, r,"/response.pdf", time.Now(), bytes.NewReader(downloadBytes))
+				http.ServeContent(w, r,"response.pdf", time.Now(), bytes.NewReader(downloadBytes))
 
 			// w.Header().Set("Content-Disposition", "attachment; filename="+strconv.Quote("translate.txt"))
 			// w.Header().Set("Content-Type", "application/octet-stream")
