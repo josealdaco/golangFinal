@@ -5,7 +5,7 @@ import (
 	"github.com/PuerkitoBio/goquery" // Used for Scraping Web
 	// "encoding/json"
 	 "html/template"
-	 // "github.com/jung-kurt/gofpdf" /// Used to create pdf File
+	  "github.com/jung-kurt/gofpdf" /// Used to create pdf File
 	 "io"
 	 "strings"
 	// "golang.org/x/net/html"
