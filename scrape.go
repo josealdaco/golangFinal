@@ -127,7 +127,7 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
         	panic(err5)
     	}
 
-		 		downloadBytes, err := ioutil.ReadFile("/Users/josearellanes/makeUtility/response.pdf")
+		 		downloadBytes, err := ioutil.ReadFile("/response.pdf")
 
 				if err != nil {
 						fmt.Println(err)
