@@ -5,7 +5,7 @@ import (
 	"github.com/PuerkitoBio/goquery" // Used for Scraping Web
 	// "encoding/json"
 	 "html/template"
-	  "github.com/jung-kurt/gofpdf" /// Used to create pdf File
+	 // "github.com/jung-kurt/gofpdf" /// Used to create pdf File
 	 "io"
 	 "strings"
 	// "golang.org/x/net/html"
@@ -122,10 +122,10 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
 		// 		log.Fatal(err2)
 		// }
 
-			err5 := GeneratePdf("response.pdf", actualString) // Here we want to generate THE PDF File that will be sent to the browser for download
-    	if err5 != nil {
-        	panic(err5)
-    	}
+		// 	err5 := GeneratePdf("response.pdf", actualString) // Here we want to generate THE PDF File that will be sent to the browser for download
+    	// if err5 != nil {
+        // 	panic(err5)
+    	// }
 
 		 		downloadBytes, err := ioutil.ReadFile("response.pdf")
 
@@ -304,48 +304,48 @@ func WriteToFile(filename string, data string) error {
     }
     return file.Sync()
 }
-func GeneratePdf(filename string, values string) error {
-
-//     pdf := gofpdf.New("P", "mm", "A4", "")
-//     pdf.SetFont("Arial", "B", 3)
-// pdf.AddPage()
-// pdf.SetMargins(10, 10, 10)
-// lines := pdf.SplitLines([]byte(values), 100.0)
-    // CellFormat(width, height, text, border, position after, align, fill, link, linkStr)
-    //pdf.CellFormat(190, 7, "", "0", 0, "CM", false, 0, "")
-
-    // ImageOptions(src, x, y, width, height, flow, options, link, linkStr)
-    // pdf.ImageOptions(
-    //     "avatar.jpg",
-    //     80, 20,
-    //     0, 0,
-    //     false,
-    //     gofpdf.ImageOptions{ImageType: "JPG", ReadDpi: true},
-    //     0,
-    //     "",
-    // )
-	const (
-	    fontPtSize = 18.0
-	    wd         = 100.0
-	)
-	pdf := gofpdf.New("P", "mm", "A4", "") // A4 210.0 x 297.0
-	pdf.SetFont("Times", "", fontPtSize)
-	_, lineHt := pdf.GetFontSize()
-	pdf.AddPage()
-	pdf.SetMargins(10, 10, 10)
-	lines := pdf.SplitLines([]byte(values), wd)
-	//ht := float64(len(lines)) * lineHt
-	// y := (297.0 - ht) / 2.0
-	// pdf.SetDrawColor(128, 128, 128)
-	// pdf.SetFillColor(255, 255, 210)
-	// x := (210.0 - (wd + 40.0)) / 2.0
-	// pdf.Rect(x, y-20.0, wd+40.0, ht+40.0, "FD")
-	// pdf.SetY(y)
-	for _, line := range lines {
-	    pdf.CellFormat(190.0, lineHt, string(line), "", 1, "C", false, 0, "")
-	}
-	// fileStr := example.Filename("Fpdf_Splitlines")
-	// err := pdf.OutputFileAndClose(fileStr)
-	// example.Summary(err, fileStr)
-    return pdf.OutputFileAndClose(filename)
-}
+// func GeneratePdf(filename string, values string) error {
+//
+// //     pdf := gofpdf.New("P", "mm", "A4", "")
+// //     pdf.SetFont("Arial", "B", 3)
+// // pdf.AddPage()
+// // pdf.SetMargins(10, 10, 10)
+// // lines := pdf.SplitLines([]byte(values), 100.0)
+//     // CellFormat(width, height, text, border, position after, align, fill, link, linkStr)
+//     //pdf.CellFormat(190, 7, "", "0", 0, "CM", false, 0, "")
+//
+//     // ImageOptions(src, x, y, width, height, flow, options, link, linkStr)
+//     // pdf.ImageOptions(
+//     //     "avatar.jpg",
+//     //     80, 20,
+//     //     0, 0,
+//     //     false,
+//     //     gofpdf.ImageOptions{ImageType: "JPG", ReadDpi: true},
+//     //     0,
+//     //     "",
+//     // )
+// 	const (
+// 	    fontPtSize = 18.0
+// 	    wd         = 100.0
+// 	)
+// 	pdf := gofpdf.New("P", "mm", "A4", "") // A4 210.0 x 297.0
+// 	pdf.SetFont("Times", "", fontPtSize)
+// 	_, lineHt := pdf.GetFontSize()
+// 	pdf.AddPage()
+// 	pdf.SetMargins(10, 10, 10)
+// 	lines := pdf.SplitLines([]byte(values), wd)
+// 	//ht := float64(len(lines)) * lineHt
+// 	// y := (297.0 - ht) / 2.0
+// 	// pdf.SetDrawColor(128, 128, 128)
+// 	// pdf.SetFillColor(255, 255, 210)
+// 	// x := (210.0 - (wd + 40.0)) / 2.0
+// 	// pdf.Rect(x, y-20.0, wd+40.0, ht+40.0, "FD")
+// 	// pdf.SetY(y)
+// 	for _, line := range lines {
+// 	    pdf.CellFormat(190.0, lineHt, string(line), "", 1, "C", false, 0, "")
+// 	}
+// 	// fileStr := example.Filename("Fpdf_Splitlines")
+// 	// err := pdf.OutputFileAndClose(fileStr)
+// 	// example.Summary(err, fileStr)
+//     return pdf.OutputFileAndClose(filename)
+// }
