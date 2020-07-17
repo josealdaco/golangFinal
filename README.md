@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/ImageSize-565MB-green)
 ![](https://img.shields.io/badge/build%20status-100%25-green)
 ![](https://img.shields.io/badge/Availability-100%25-green)
-
+[![Go Report Card](https://goreportcard.com/badge/github.com/siko408/golangFinal)](https://goreportcard.com/report/github.com/siko408/golangFinal)
 
 <h3>RUNNING CONTAINER</h3>
 
