@@ -115,18 +115,18 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
 		for _,value := range toString{
 			actualString = actualString + value//strings.TrimSuffix(value, "\n")
 		}
-		fmt.Println(toString)
-		err2 := WriteToFile("response.txt", actualString)
-		   if err2 != nil {
-				log.Fatal(err2)
-		}
+		// fmt.Println(toString)
+		// err2 := WriteToFile("response.txt", actualString)
+		//    if err2 != nil {
+		// 		log.Fatal(err2)
+		// }
 
-		// 	err5 := GeneratePdf("response.pdf", actualString)
-    	// if err5 != nil {
-        // 	panic(err5)
-    	// }
+			err5 := GeneratePdf("response.pdf", actualString)
+    	if err5 != nil {
+        	panic(err5)
+    	}
 
-		 		downloadBytes, err := ioutil.ReadFile("/Users/josearellanes/makeUtility/response.txt")
+		 		downloadBytes, err := ioutil.ReadFile("/Users/josearellanes/makeUtility/response.pdf")
 
 				if err != nil {
 						fmt.Println(err)
@@ -151,7 +151,7 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
 				     }
 
 				// force it down the client's.....
-				http.ServeContent(w, r,"/Users/josearellanes/makeUtility/response.txt", time.Now(), bytes.NewReader(downloadBytes))
+				http.ServeContent(w, r,"/Users/josearellanes/makeUtility/response.pdf", time.Now(), bytes.NewReader(downloadBytes))
 
 			// w.Header().Set("Content-Disposition", "attachment; filename="+strconv.Quote("translate.txt"))
 			// w.Header().Set("Content-Type", "application/octet-stream")

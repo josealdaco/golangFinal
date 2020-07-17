@@ -16,7 +16,7 @@ COPY go.sum .
 RUN go mod download
 
 # Copy the code into the container
-COPY . home.html
+
 COPY . .
 # Build the application
 RUN go build -o main .
