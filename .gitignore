@@ -1,0 +1,4 @@
+vendor
+bin
+go.mod
+go.sum
