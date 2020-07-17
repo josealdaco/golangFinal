@@ -99,6 +99,7 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
 	//var file = "response.pdf"
 	fmt.Println(r.Method)
 	if r.Method == "GET" {
+		/// Once the User has clicked the download Button, parse the data from the textarea
 		r.ParseForm()
 		// fmt.Println("WE ARE IN GET", r.Body)
 	 //
@@ -121,7 +122,7 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
 		// 		log.Fatal(err2)
 		// }
 
-			err5 := GeneratePdf("response.pdf", actualString)
+			err5 := GeneratePdf("response.pdf", actualString) // Here we want to generate THE PDF File that will be sent to the browser for download
     	if err5 != nil {
         	panic(err5)
     	}
@@ -151,7 +152,7 @@ func handlerDownload(w http.ResponseWriter, r *http.Request) {
 				     }
 
 				// force it down the client's.....
-				http.ServeContent(w, r,"/Users/josearellanes/makeUtility/response.pdf", time.Now(), bytes.NewReader(downloadBytes))
+				http.ServeContent(w, r,"/response.pdf", time.Now(), bytes.NewReader(downloadBytes))
 
 			// w.Header().Set("Content-Disposition", "attachment; filename="+strconv.Quote("translate.txt"))
 			// w.Header().Set("Content-Type", "application/octet-stream")
